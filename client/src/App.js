@@ -16,8 +16,8 @@ class App extends React.Component {
       currentUser: null,
       authFormData: {
         username: '',
-        email: '',
-        password: ''
+        password: '',
+        email: ''
       }
     }
   }
@@ -39,7 +39,7 @@ class App extends React.Component {
       this.props.history.push(`/`)
     }
   
-    handleRegister = async (e) => {
+  handleRegister = async (e) => {
       e.preventDefault();
       const currentUser = await registerUser(this.state.authFormData);
       this.setState({ currentUser });

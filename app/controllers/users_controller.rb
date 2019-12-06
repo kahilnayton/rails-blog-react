@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
+    puts @user
 
     if @user.save
       @token = encode(user_id: @user.id, username: @user.username)
@@ -72,6 +73,7 @@ def show_items
 
     # Only allow a trusted parameter "white list" through.
     def user_params
+      puts params
       params.require(:user).permit(:username, :email, :password, :itemId, :firstname, :lastname, :location)
     end
 end
