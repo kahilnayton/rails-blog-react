@@ -1,13 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Form, Field } from "simple-react-form";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-     This is a rails react app
-    </div>
-  );
+export default class App extends React.Component {
+  state = {};
+
+  render() {
+    return (
+      <div className="app">
+        <div className="section">
+          <Form state={this.state} onChange={state => this.setState(state)}>
+            <Field fieldName="name" label="Name" type={Text} />
+          </Form>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default App;
