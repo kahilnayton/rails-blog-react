@@ -3,6 +3,7 @@ import { Form, Field } from "simple-react-form";
 import { Route, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Register from "./components/Register";
 import { withRouter } from "react-router";
@@ -93,6 +94,7 @@ class App extends React.Component {
           />)}
         />
         </main>
+        <Footer/>
       </div>
     );
   }
