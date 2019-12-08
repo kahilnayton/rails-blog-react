@@ -3,17 +3,15 @@
 one:
   title: MyString
   description: MyString
-  make: MyString
-  model: MyString
-  options: MyString
-  year: 1
+  age: 1
+  sex: MyString
+  default_image: MyString
   user: one
 
 two:
   title: MyString
   description: MyString
-  make: MyString
-  model: MyString
-  options: MyString
-  year: 1
+  age: 1
+  sex: MyString
+  default_image: MyString
   user: two

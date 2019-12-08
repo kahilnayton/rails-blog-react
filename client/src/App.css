@@ -2,31 +2,27 @@
   --text-light: rgb(255, 255, 255);
   --text-grey: rgb(230, 230, 230);
   --text-soft: rgb(211, 248, 255);
-  --text-color: #ffebee;
+  --text-color: #00259d;
   --text-dark: rgb(0, 0, 0);
   --bg-light: rgb(255, 255, 255);
   --bg-grey: rgb(230, 230, 230);
-  --bg-soft: #ffebee;
-  --bg-color: #ae3a4bb1;
+  --bg-soft: #ebf5ff;
+  --bg-color: #23a0ff4f;
   --bg-dark: #2d3436;
   --nav-shadow: 0 0px 10px rgba(0, 0, 0, 0.6);
   --element-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.25);
   --text-shadow: 5px 5px 0.2rem rgba(0, 0, 0, 0.25);
   
-  --font-prime: 'Raleway', sans-serif;
+  --font-prime: 'Alegreya', serif;
   --font-section: 'Open Sans', sans-serif; 
 }
-
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
-@import url("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
-@import url("https://fonts.googleapis.com/css?family=Bebas+Neue|Tomorrow");
-@import url("https://fonts.googleapis.com/css?family=Anton");
 
 
 html, body .app {
   margin: 0;
   padding: 0;
   height: 100vh;
+  width: 100vw;
   font-family: var(--font-prime);
 }
 
@@ -39,7 +35,7 @@ h4,
 h5 {
   margin: auto;
   font-family: var(--font-prime);
-  color: var(--text-dark);
+  color: var(--text-color);
 }
 
 .app {
@@ -50,6 +46,8 @@ h5 {
 header {
   height: 20vh;
   display: grid;
+  padding: 0;
+  margin: 0;
   grid-template-columns: 2fr 2fr 2fr;
   /* background-image: url("./images/travel6.jpeg"); */
   width: 100%;
@@ -80,4 +78,111 @@ header {
   color: var(--text-dark);
   font-size: 3em;
   margin-right: 10px;
+}
+
+.login-form {
+  background: url("./cat-hand-fade.png") no-repeat center center fixed ;
+  min-height: 90vh;
+  padding: 20px;
+  width: 100%;
+  object-fit: center;
+  /* opacity: .5; */
+  
+}
+
+.login-form h2 {
+  /* margin-top: 100px; */
+  text-align: center;
+  color: black;
+}
+
+.register-form {
+  min-height: 100vh;
+  
+}
+
+.auth-container {
+  padding-top: 200px;
+  position: absolute;
+  /* z-index: -1;    */
+  width: 100%;
+  height: 100%;
+  background: url("./cat-hand-fade.png") no-repeat center center fixed ;
+  background-size: cover;
+  /* opacity: 0.5; */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+.register-form h2 {
+  margin-top: 100px;
+  text-align: center;
+  color: black;
+  opacity: 0.6;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+form p {
+  font-size: 25px;
+  color: var(--text-color);
+  opacity: 1;
+
+}
+
+
+/* Style inputs with type="text", select elements and textareas */
+input {
+  width: 100%; /* Full width */
+  height: 35px;
+  text-align: center;
+  padding: 10px; /* Some padding */ 
+  margin: 10px;
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  opacity: 0.6;
+  cursor: pointer;
+} 
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px 20px;
+  margin: 10px;
+  box-sizing: border-box;
+  resize: none;
+  border-radius: 4px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #8B92B3;
+  color: black;
+  padding: 19px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  width: 30%;
+  height: 7%;
+  margin: 10px auto;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input:hover, textarea:hover {
+  opacity: 1;
 }

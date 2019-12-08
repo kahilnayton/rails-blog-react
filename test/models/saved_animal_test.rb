@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SavedItemTest < ActiveSupport::TestCase
+class SavedAnimalTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

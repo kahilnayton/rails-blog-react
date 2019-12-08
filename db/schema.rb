@@ -10,46 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_121757) do
+ActiveRecord::Schema.define(version: 2019_12_08_205013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "item_images", force: :cascade do |t|
+  create_table "animal_images", force: :cascade do |t|
     t.text "image_url"
-    t.bigint "item_id", null: false
+    t.bigint "animal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_item_images_on_item_id"
+    t.index ["animal_id"], name: "index_animal_images_on_animal_id"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "animals", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "make"
-    t.string "model"
-    t.string "options"
-    t.integer "year"
+    t.integer "age"
+    t.string "sex"
+    t.string "default_image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["user_id"], name: "index_animals_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "saved_items", force: :cascade do |t|
+  create_table "saved_animals", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "animal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_saved_items_on_item_id"
-    t.index ["user_id"], name: "index_saved_items_on_user_id"
+    t.index ["animal_id"], name: "index_saved_animals_on_animal_id"
+    t.index ["user_id"], name: "index_saved_animals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_12_06_121757) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "item_images", "items"
-  add_foreign_key "items", "users"
-  add_foreign_key "saved_items", "items"
-  add_foreign_key "saved_items", "users"
+  add_foreign_key "animal_images", "animals"
+  add_foreign_key "animals", "users"
+  add_foreign_key "saved_animals", "animals"
+  add_foreign_key "saved_animals", "users"
 end

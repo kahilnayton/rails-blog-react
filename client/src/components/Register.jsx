@@ -4,8 +4,7 @@ import React from 'react';
 const Register = (props) => {
 
   return (
-    <div className="wrapper">
-
+    <div className="register-form">
       <div className="auth-container">
         <h1>Register</h1>
         <hr />
