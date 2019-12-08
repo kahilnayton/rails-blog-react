@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   resources :animal_images
   resources :animals
-  # resources :useritems
+  # resources :useranimals
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
   resources :users
 
-  get 'users/:id/savedItems', to: 'users#show_saved_Items'
-  get 'users/:id/items', to: 'users#show_items'
-  post 'users/savedItems/:itemId', to: 'users#add_saved_Item'
-  delete 'users/savedItems/:itemId', to: 'users#delete_saved_Item'
-  get 'items/:id/images', to: 'items#show_images'
+  get 'users/:id/savedAnimals', to: 'users#show_saved_Animals'
+  get 'users/:id/animals', to: 'users#show_animals'
+  post 'users/savedAnimals/:animalId', to: 'users#add_saved_Animal'
+  delete 'users/savedAnimals/:animalId', to: 'users#delete_saved_Animal'
+  get 'animals/:id/images', to: 'animals#show_images'
 
 end

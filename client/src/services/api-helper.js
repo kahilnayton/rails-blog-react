@@ -7,6 +7,9 @@ const api = axios.create({
   baseURL: baseUrl
 })
 
+
+// ************** Auth *****************
+
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', loginData)
   localStorage.setItem('authToken', resp.data.token);
@@ -15,7 +18,6 @@ export const loginUser = async (loginData) => {
 }
 
 export const registerUser = async (registerData) => {
-  debugger;
   const resp = await api.post('/users/', { user: registerData })
   localStorage.setItem('authToken', resp.data.token);
   api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`
@@ -30,4 +32,21 @@ export const verifyUser = async () => {
     return resp.data
   }
   return false
+}
+// Get my animals 
+export const getMyAnimals = async (user) => {
+  const resp = await api.get(`/users/${user}/animals`);
+  return resp.data
+}
+
+// Get all animals
+export const getAllAnimals = async () => {
+  const resp = await api.get(`/animals`);
+  return resp.data
+}
+
+// Get AnimalsSaved
+export const getSavedAnimals = async (user) => {
+  const resp = await api.get(`/users/${user}/savedAnimals`);
+  return resp.data
 }

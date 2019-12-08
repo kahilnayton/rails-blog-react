@@ -1,103 +1,78 @@
-import React from "react";
-import { Form, Field } from "simple-react-form";
-import { Route, Link } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
+import React, { useState, useEffect } from 'react';
+import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { Route, Link } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import Register from './components/Register';
+import { withRouter } from 'react-router';
+import { verifyUser } from './services/api-helper';
 import Home from './components/Home';
-import Register from "./components/Register";
-import { withRouter } from "react-router";
-import { verifyUser, registerUser, loginUser,  } from "./services/api-helper";
-import "./App.css";
+// import ItemDetails from './components/ItemDetails';
+// import EditItem from './components/EditItem';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: null,
-      authFormData: {
-        username: '',
-        password: '',
-        email: ''
-      }
-    }
+const App = (props) => {
+  const [currentUser, setcurrentUser] = useState(null);
+
+  const setUser = (user) => {
+    setcurrentUser(user);
+    props.history.push("/")
   }
 
-    async componentDidMount() {
-      const currentUser = await verifyUser();
-
+  const handleLogout = () => {
+    setcurrentUser(null);
+    localStorage.removeItem('authToken');
+    props.history.push("/login");
+  }
+  const verify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      setUser(currentUser);
     }
-
-    handleLoginButton = () => {
-      this.props.history.push("/login")
-    }
-  
-    handleLogin = async () => {
-      const currentUser = await loginUser(this.state.authFormData);
-      this.setState({
-        currentUser
-      })
-      this.props.history.push(`/`)
-    }
-  
-  handleRegister = async (e) => {
-      e.preventDefault();
-      const currentUser = await registerUser(this.state.authFormData);
-      this.setState({ currentUser });
-      this.props.history.push(`/`)
-    }
-  
-    handleLogout = () => {
-      localStorage.removeItem("jwt");
-      this.setState({
-        currentUser: null
-      })
-    }
-  
-    authHandleChange = (e) => {
-      const { name, value } = e.target;
-      this.setState(prevState => ({
-        authFormData: {
-          ...prevState.authFormData,
-          [name]: value
-        }
-      }));
-    }
+  }
+  useEffect(() => {
+    verify();
+    if (!currentUser) props.history.push("/login");
+  }, []);
 
 
-  render() {
-    return (
-      <div className="app">
-        <Header currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
-        <main className="main">
-          {this.state.currentUser ? (
-            <Route
-              exact
-              path="/"
-              render={() => <Home currentUser={this.state.currentUser} />}
-            />
-          ) : (
+  return (
+    <div className="app" >
+      <Header
+        currentUser={currentUser}
+        handleLogout={handleLogout}
+      />
+      <main className="main">
+        {
+          currentUser ?
+            <Route exact path="/" render={() => <Home currentUser={currentUser} />} />
+            :
             <></>
-          )}
-          <Route exact path="/login" render={() => (
+        }
+        <Route path="/login" render={() => (
           <LoginForm
-            handleLogin={this.handleLogin}
-            handleChange={this.authHandleChange}
-            formData={this.state.authFormData} />)}
-        />
-
-        <Route exact path="/register" render={() => (
+            setUser={setUser} />
+        )} />
+        <Route path="/register" render={() => (
           <Register
-            handleRegister={this.handleRegister}
-            handleChange={this.authHandleChange}
-            formData={this.state.authFormData}
-          />)}
-        />
-        </main>
-        <Footer/>
-      </div>
-    );
-  }
+            setUser={setUser}
+          />)} />
+        {/* <Route exact path="/item-details/:itemId" render={(props) =>
+          <ItemDetails
+            itemId={props.match.params.itemId}
+            currentUser={currentUser}
+          />
+        
+        } />
+        <Route exact path="/edit-item/:itemId" render={(props) =>
+          <EditItem
+            itemId={props.match.params.itemId}
+            currentUser={currentUser}
+          />} /> */}
+      </main >
+      <Footer />
+    </div>
+  );
 }
 
 export default withRouter(App);
