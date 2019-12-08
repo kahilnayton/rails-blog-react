@@ -50,3 +50,60 @@ export const getSavedAnimals = async (user) => {
   const resp = await api.get(`/users/${user}/savedAnimals`);
   return resp.data
 }
+
+// AnimalAdd
+export const addAnimal = async (data, images) => {
+  const resp = await api.post("/animals", data);
+  images.forEach(async (image) =>
+    await addAnimalImage(resp.data.id, image)
+  );
+  return resp.data
+}
+
+// AnimalEdit
+export const editAnimal = async (data, ) => {
+  const resp = await api.put(`/animals/${data.id}`, data);
+  return resp.data
+}
+
+// Add an animal image
+export const addAnimalImage = async (animalId, image) => {
+  const resp = await api.post("/animal_images", { image_url: image, animal_id: animalId })
+  return resp.data
+}
+
+// Delete an animal
+export const deleteAnimal = async (id) => {
+  const resp = await api.delete(`/animals/${id}`);
+  return resp.data
+}
+
+// Delete image 
+export const deleteImage = async (id) => {
+  const resp = await api.delete(`/animal_images/${id}`);
+  return resp.data
+}
+
+// Get an animal by id
+export const getAnimal = async (id) => {
+  const resp = await api.get(`/animals/${id}`);
+  return resp.data
+}
+
+// Get an owners profile
+export const getOwnerProfile = async (user) => {
+  const resp = await api.get(`/users/${user}`);
+  return resp.data
+}
+
+// Save an animal 
+export const saveAnimal = async (id) => {
+  const resp = await api.post(`users/savedAnimals/${id}`);
+  return resp.data
+}
+
+// unSave an animal
+export const unSaveAnimal = async (id) => {
+  const resp = await api.delete(`users/savedAnimals/${id}`);
+  return resp.data
+}

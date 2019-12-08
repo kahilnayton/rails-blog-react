@@ -31,7 +31,6 @@ export default function SavedAnimals(props) {
                   <OverlayTrigger
                     placement="top"
                     delay={{ show: 250, hide: 400 }}
-                    overlay={<Tooltip>Listing is less than 4 days old!</Tooltip>}
                   >
                     {
                       moment(Date.now()).diff(new Date(animal.created_at), "days") < 4 ?
@@ -41,12 +40,11 @@ export default function SavedAnimals(props) {
                 </h2>
               </Link>
               <p>{animal.description}</p>
-              <p>${parseFloat(animal.price).toFixed(2)}</p>
               <p>Location: {props.currentUser.location}</p>
             </div>
             <div>
               <p>ID: {animal.id}</p>
-              <p>Age: {animal.timedistance}</p>
+              <p>Age: {animal.age}</p>
               <p>Posted by: {animal.user.username}</p>
             </div>
           </div>

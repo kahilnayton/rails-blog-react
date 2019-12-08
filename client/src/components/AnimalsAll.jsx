@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAllAnimals } from '../services/api-helper';
 import catHand from '../cat-hand.png';
 import moment from 'moment';
-import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Badge, OverlayTrigger } from 'react-bootstrap';
 
 export default function AnimalsAll(props) {
   const [animals, setAnimals] = useState(null);

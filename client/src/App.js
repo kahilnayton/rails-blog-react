@@ -8,8 +8,8 @@ import Register from './components/Register';
 import { withRouter } from 'react-router';
 import { verifyUser } from './services/api-helper';
 import Home from './components/Home';
-// import ItemDetails from './components/ItemDetails';
-// import EditItem from './components/EditItem';
+import AnimalDetails from './components/AnimalDetails';
+import AnimalEdit from './components/AnimalEdit';
 
 const App = (props) => {
   const [currentUser, setcurrentUser] = useState(null);
@@ -57,18 +57,18 @@ const App = (props) => {
           <Register
             setUser={setUser}
           />)} />
-        {/* <Route exact path="/item-details/:itemId" render={(props) =>
-          <ItemDetails
-            itemId={props.match.params.itemId}
+        <Route exact path="/animal-details/:animalId" render={(props) =>
+          <AnimalDetails
+            animalId={props.match.params.animalId}
             currentUser={currentUser}
           />
         
         } />
-        <Route exact path="/edit-item/:itemId" render={(props) =>
-          <EditItem
-            itemId={props.match.params.itemId}
+        <Route exact path="/edit-animal/:animalId" render={(props) =>
+          <AnimalEdit
+            animalId={props.match.params.animalId}
             currentUser={currentUser}
-          />} /> */}
+          />} />
       </main >
       <Footer />
     </div>

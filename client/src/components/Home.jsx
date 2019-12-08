@@ -23,9 +23,9 @@ export default function Home(props) {
           currentUser={props.currentUser} />
       </section>
 
-      {/* <section id="animals-add">
+      <section id="animals-add">
         <AnimalAdd />
-      </section> */}
+      </section>
     </div>
   )
 }

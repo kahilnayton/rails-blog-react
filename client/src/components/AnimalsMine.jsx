@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getMyAnimals } from '../services/api-helper';
 import catHand from '../cat-hand.png';
 import moment from 'moment';
-import { Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Badge, OverlayTrigger } from 'react-bootstrap';
 
 export default function AnimalsMine(props) {
   const [animals, setAnimals] = useState(null);
@@ -45,7 +45,7 @@ export default function AnimalsMine(props) {
             </div>
             <div>
               <p>ID: {animal.id}</p>
-              <p>Age: {animal.timedistance}</p>
+              <p>Age: {animal.age}</p>
               <p>Posted by: {animal.user.username}</p>
             </div>
           </div>

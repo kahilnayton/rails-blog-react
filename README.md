@@ -1,5 +1,20 @@
-# foster meow
+# Foster meow!
 
+![cat-hand](client/src/cat-hand.png)
+
+An app where people can foster animals
+
+## Stack
+- Rails
+- React.js
+- PostgresQL
+
+
+## ERD
+![foster-meow-erd](https://media.git.generalassemb.ly/user/19642/files/17c04000-19e2-11ea-9082-001e0b4b9a25)
+
+
+## Backend
 rails g controller Authentication
 
 rails g scaffold User username:string email:string password_digest:string 
