@@ -8,6 +8,7 @@ export default function Home(props) {
  
   return (
     <div class="Home">
+      
       <section id="animals-all">
         <AnimalsAll
           currentUser={props.currentUser} />

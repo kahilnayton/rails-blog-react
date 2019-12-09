@@ -21,11 +21,11 @@ const LoginForm = (props) => {
 
   return (
     <section className='login-form'>
-      <form className="form-login" onSubmit={(e) => {
+      <form className="login-form" onSubmit={(e) => {
         e.preventDefault();
         handleLogin(username, password);
       }} >
-        <h1><span className="log-in">Log in</span> or <span className="register">register</span></h1>
+        <h1 className="log-in">Log in</h1>
         <p className="float">
           <label for="login">Username</label>
           <input id='name' type='text' value={username} onChange={e => setUsername(e.target.value)} placeholder="Username or email" />
@@ -34,10 +34,11 @@ const LoginForm = (props) => {
           <label id='password' for="password">Password</label>
           <input type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" className="showpassword" />
         </p>
-        <p className="clearfix">
-        <input type="submit" name="submit" value="Log in" />
+
+        <button className="login-submit" type="submit" name="submit" value="Log in">Login
+        </button>
+          <br/>
           <Link to="/register"><span className="register">register</span></Link>
-        </p>
       </form>
       <br />
       <p>{errorMessage}</p>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { DropdownButton, Dropdown, Button } from 'react-bootstrap';
+import { Dropdown } from 'semantic-ui-react';
 import Profile from './Profile'
 
 export default function Header(props) {
@@ -16,16 +16,16 @@ export default function Header(props) {
             ?
             <>
               <i class="im im-user-circle"></i>
-              <DropdownButton
+              <Dropdown
                 alignRight
                 title={props.currentUser.firstname}
                 id="dropdown-menu-align-right">
                 <Dropdown.Item eventKey="1" onClick={() => setModalShow(true)}>View Profile</Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={props.handleLogout}>Logout</Dropdown.Item>
-              </DropdownButton>
+              </Dropdown>
             </>
             :
-            <Link to="/login"><Button variant="primary">Login</Button></Link>
+            <Link to="/login"><button className="login-button">Login</button></Link>
         }
       </nav>
       <Profile

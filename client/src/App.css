@@ -1,14 +1,14 @@
 :root {
   --text-light: rgb(255, 255, 255);
-  --text-grey: rgb(230, 230, 230);
-  --text-soft: rgb(211, 248, 255);
-  --text-color: #00259d;
+  --text-grey: #F0F0F2;
+  --text-soft: #4D6F8C;
+  --text-color: #4C6473;
   --text-dark: rgb(0, 0, 0);
-  --bg-light: rgb(255, 255, 255);
-  --bg-grey: rgb(230, 230, 230);
-  --bg-soft: #ebf5ff;
-  --bg-color: #23a0ff4f;
-  --bg-dark: #2d3436;
+  --bg-light: #F0F0F2;
+  --bg-soft: #A1A6A5;
+  --bg-grey: #68736F;
+  --bg-color: #4D6F8C;
+  --bg-dark: #4C6473;
   --nav-shadow: 0 0px 10px rgba(0, 0, 0, 0.6);
   --element-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.25);
   --text-shadow: 5px 5px 0.2rem rgba(0, 0, 0, 0.25);
@@ -18,7 +18,7 @@
 }
 
 
-html, body .app {
+html, body {
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -28,14 +28,24 @@ html, body .app {
 
 a,
 h1,
-p,
 h2,
 h3,
 h4,
 h5 {
   margin: auto;
   font-family: var(--font-prime);
+  color: var(--text-light);
+}
+
+#title1, #title2 {
+  padding: 5px;
+}
+
+p {
+  margin: auto;
   color: var(--text-color);
+  font-family: var(--font-prime);
+  font-size: 20px;
 }
 
 .app {
@@ -55,12 +65,12 @@ header {
   background-repeat: no-repeat;
   background-position-y: -10px;
   background-position-x: 40px;
-  background-color: var(--bg-color);
+  background-color: var(--bg-soft);
 }
 
 
 .footer {
-  background: var(--bg-color);
+  background: var(--bg-soft);
   display: flex;
   position: fixed;
   bottom: 0;
@@ -96,6 +106,22 @@ header {
   color: black;
 }
 
+.login-form h1, .register  {
+  font-size: 30px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+
+label {
+  display:block;
+  width:x;
+  height:y;
+  text-align:right;
+  text-align: center;
+  color: var(--text-color);
+}
+
 .register-form {
   min-height: 100vh;
   
@@ -124,6 +150,28 @@ header {
   opacity: 0.6;
 }
 
+.login-button, .login-submit {
+  display: inline-block;
+  padding: 5px;
+  height: 50px;
+  width: 150px;
+  font-size: 20px;
+  margin: 10px;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight: 300;
+  color: var(--text-light);
+  background-color: var(--bg-color);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.login-submit {
+  text-align: center;
+  }
+
 
 form {
   display: flex;
@@ -137,7 +185,6 @@ form p {
   font-size: 25px;
   color: var(--text-color);
   opacity: 1;
-
 }
 
 
@@ -186,3 +233,16 @@ input[type=submit] {
 input:hover, textarea:hover {
   opacity: 1;
 }
+
+/* *********** Hover ********** */
+.login-button:hover, .login-submit:hover{
+  background-color:#4095c6;
+  cursor: pointer;
+  }
+
+/* @media all and (max-width:30em){
+   .login-button{
+display:block;
+margin:0.2em auto;
+ }
+} */
